@@ -64,6 +64,24 @@ export async function setupVite(app: Express, server: Server) {
   });
 }
 
+export function ensureProductionStyles(template: string, distPath: string): { template: string; ok: boolean } {
+  if (/<link[^>]+rel=["']stylesheet["']/i.test(template)) return { template, ok: true };
+  const assetDir = path.resolve(distPath, "assets");
+  const cssAsset = fs.existsSync(assetDir)
+    ? fs.readdirSync(assetDir).find((file) => file.endsWith(".css"))
+    : undefined;
+  if (cssAsset) {
+    console.warn(`[SSR] index.html had no stylesheet link; injecting /assets/${cssAsset}`);
+    return { template: template.replace("</head>", `<link rel="stylesheet" href="/assets/${cssAsset}"></head>`), ok: true };
+  }
+  console.error(`[SSR] Critical: no compiled stylesheet found in ${assetDir}`);
+  return { template, ok: false };
+}
+
+export function cssFailurePage() {
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rosales — Temporary maintenance</title></head><body style="margin:0;background:#17231a;color:#fff;font-family:Arial,sans-serif"><main style="max-width:680px;margin:0 auto;padding:22vh 24px"><p style="color:#a8cc9c;text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:700">Rosales Landscaping &amp; Construction</p><h1 style="font-family:Georgia,serif;font-size:clamp(40px,8vw,72px);font-weight:400;line-height:.98">We are preparing the next view of your landscape.</h1><p style="color:#f2eee5;font-size:18px;line-height:1.6">Please call (707) 738-1746 or try again shortly.</p></main></body></html>`;
+}
+
 export function serveStatic(app: Express) {
   const distPath =
     process.env.NODE_ENV === "development"
@@ -88,13 +106,25 @@ export function serveStatic(app: Express) {
   const serverEntryPath = path.resolve(import.meta.dirname, "server-ssr", "entry-server.js");
   app.use("*", async (req, res) => {
     try {
-      const template = await fs.promises.readFile(templatePath, "utf-8");
+      const rawTemplate = await fs.promises.readFile(templatePath, "utf-8");
+      const styleResult = ensureProductionStyles(rawTemplate, distPath);
+      if (!styleResult.ok) {
+        res.status(500).set({ "Content-Type": "text/html", "Cache-Control": "no-store" }).end(cssFailurePage());
+        return;
+      }
+      const template = styleResult.template;
       const { render } = await import(serverEntryPath);
       const { html, dehydratedState, head } = await render(req.originalUrl);
       res.status(head.notFound ? 404 : 200).set({ "Content-Type": "text/html", "Cache-Control": "no-cache" }).end(composeHtml(template, html, head, dehydratedState));
     } catch (error) {
       console.error("[SSR] render failed", error);
-      const template = await fs.promises.readFile(templatePath, "utf-8");
+      const rawTemplate = await fs.promises.readFile(templatePath, "utf-8");
+      const styleResult = ensureProductionStyles(rawTemplate, distPath);
+      if (!styleResult.ok) {
+        res.status(500).set({ "Content-Type": "text/html", "Cache-Control": "no-store" }).end(cssFailurePage());
+        return;
+      }
+      const template = styleResult.template;
       res.status(200).set({ "Content-Type": "text/html", "Cache-Control": "no-cache" }).end(template.replace("<!--app-head-->", () => headTags({ title: siteName, description: "Rosales Landscaping & Construction serves the North Bay." })));
     }
   });

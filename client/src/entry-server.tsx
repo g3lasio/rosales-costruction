@@ -1,5 +1,5 @@
 import { renderToString } from "react-dom/server";
-import { QueryClient, QueryClientProvider, dehydrate } from "@tanstack/react-query";
+import { HydrationBoundary, QueryClient, QueryClientProvider, dehydrate } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import { Router } from "wouter";
 import superjson from "superjson";
@@ -15,6 +15,6 @@ export async function render(url: string): Promise<RenderResult> {
   const ssrSearch = qi === -1 ? "" : url.slice(qi + 1);
   const head = prefetchForPath(url);
   const trpcClient = trpc.createClient({ links: [httpBatchLink({ url: "/api/trpc", transformer: superjson })] });
-  const html = renderToString(<trpc.Provider client={trpcClient} queryClient={queryClient}><QueryClientProvider client={queryClient}><Router ssrPath={ssrPath} ssrSearch={ssrSearch}><App /></Router></QueryClientProvider></trpc.Provider>);
+  const html = renderToString(<trpc.Provider client={trpcClient} queryClient={queryClient}><QueryClientProvider client={queryClient}><HydrationBoundary state={dehydrate(queryClient)}><Router ssrPath={ssrPath} ssrSearch={ssrSearch}><App /></Router></HydrationBoundary></QueryClientProvider></trpc.Provider>);
   return { html, dehydratedState: dehydrate(queryClient), head };
 }

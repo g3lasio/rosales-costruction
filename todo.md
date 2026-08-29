@@ -41,3 +41,17 @@
 - [x] Sincronizar la versión validada con el repositorio de destino g3lasio/rosales-costruction sin desplegarla.
 - [x] Configurar el remoto de destino y subir allí la versión validada.
 - [x] Verificar en GitHub que el repositorio de destino contiene los archivos completos del proyecto.
+- [x] Reproducir la ruptura visual en la vista previa y revisar los logs de cliente/servidor.
+- [x] Auditar márgenes, anchos, overflow, dependencias de fuentes y referencias de assets.
+- [x] Auditar todas las combinaciones de fondo y texto y corregir las que no sean legibles.
+- [x] Corregir el layout para que los espaciados dependan del código local y no de servicios externos.
+- [ ] Validar escritorio y móvil, ejecutar tipos, pruebas y build, y actualizar el repositorio de destino.
+- [x] Eliminar la dependencia de Google Fonts en producción mediante fuentes empaquetadas o una pila local equivalente.
+- [x] Añadir una comprobación de producción que falle de forma visible si el HTML no enlaza la hoja CSS compilada.
+- [x] Reforzar overlays y colores explícitos en secciones con texto sobre fotografía o fondos oscuros.
+- [ ] Validar el artefacto final, capturas responsive y publicar la corrección en main del repositorio de destino.
+- [x] Corregir el desajuste entre el árbol SSR y el árbol hidratado que elimina o regenera la interfaz en producción.
+- [x] Proteger el acceso a localStorage del hook de autenticación para que SSR no falle antes de renderizar el layout público.
+- [x] Implementar un estado visible y claro cuando falte el CSS crítico de producción, en lugar de depender sólo del log del servidor.
+- [x] Añadir una prueba automatizada que verifique el enlace CSS en el HTML SSR y el fallback visible cuando el asset no exista.
+- [x] Añadir una prueba de integración que consulte una ruta SSR real y confirme el layout y el enlace de stylesheet en el HTML servido.

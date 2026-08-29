@@ -185,8 +185,9 @@
   --rosales-clay: #9d5036;
   --rosales-mist: #d9dfd2;
   --rosales-line: rgba(23, 35, 26, 0.16);
-  --font-display: "Instrument Serif", Georgia, serif;
-  --font-body: "Manrope", "Helvetica Neue", sans-serif;
+  /* Local-first stacks keep layout stable when Railway or a browser blocks external fonts. */
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-body: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
 html { scroll-behavior: smooth; background: var(--rosales-limestone); }
@@ -326,3 +327,18 @@ h1 em, h2 em { color: var(--rosales-green); font-style: italic; }
 @media (max-width:940px){.timeline-header{grid-template-columns:1fr;gap:22px;margin-bottom:37px}.timeline-shell{grid-template-columns:1fr}.timeline-steps{grid-template-columns:repeat(3,1fr);padding:0}.timeline-step{grid-template-columns:26px 1fr;min-height:125px;padding:17px 14px}.timeline-step+.timeline-step{border-top:0;border-left:1px solid rgba(255,255,255,.13)}.timeline-step-icon,.timeline-arrow{display:none}.timeline-step.is-active{transform:translateY(7px)}.timeline-stage{grid-template-columns:1fr 1fr;min-height:0}.timeline-photo-stack img{min-height:320px}.timeline-footer{padding-left:0}}
 @media (max-width:620px){.build-timeline{padding:70px 0}.timeline-header h2{font-size:58px}.timeline-header p{font-size:14px}.timeline-shell{margin:0 -1rem;box-shadow:none}.timeline-steps{grid-template-columns:1fr;padding:0}.timeline-step{grid-template-columns:24px 1fr auto;min-height:77px;padding:12px 14px}.timeline-step+.timeline-step{border-top:1px solid rgba(255,255,255,.13);border-left:0}.timeline-step.is-active{transform:none}.timeline-step-icon{display:none}.timeline-step strong{font-size:23px}.timeline-arrow{display:block;opacity:1}.timeline-stage{grid-template-columns:1fr}.timeline-photo-stack{min-height:252px;padding:20px 20px 0}.timeline-photo-stack span{inset:0 18px 0 0;transform:translate(11px,11px)}.timeline-photo-stack span+span{transform:translate(19px,19px)}.timeline-photo-stack img{min-height:232px}.timeline-stage-copy{padding:32px 21px 35px}.timeline-stage h3{font-size:51px}.timeline-stage-note{margin-bottom:24px}.timeline-footer{display:grid;margin-top:28px;gap:20px}.timeline-footer .text-link{justify-self:start}}
 @media (prefers-reduced-motion:reduce){.timeline-step,.timeline-arrow{transition:none}}
+
+/* Production hardening: explicit section colors prevent inherited white text on light surfaces. */
+body { overflow-x: hidden; }
+.intro-section, .proof-section, .story-section, .service-detail, .contact-section, .policy, .build-timeline { color: var(--rosales-ink); }
+.intro-section p, .proof-section p, .story-section p, .service-detail p, .contact-section p, .policy p, .build-timeline p { color: rgba(30,39,31,.78); }
+.dark-section, .page-intro, .service-hero, .home-hero, .platform-panel { color: #fff; }
+.dark-section p, .page-intro p, .service-hero p, .home-hero p, .platform-panel p { color: rgba(255,255,255,.84); }
+.hero-shade { background: linear-gradient(105deg, rgba(8,17,10,.94) 0%, rgba(10,20,12,.74) 52%, rgba(10,20,12,.28) 100%); }
+.service-card-image::after { background: linear-gradient(0deg, rgba(8,17,10,.97) 0%, rgba(8,17,10,.34) 76%, rgba(8,17,10,.08) 100%); }
+.project-tile::after { background: linear-gradient(0deg, rgba(8,17,10,.93), rgba(8,17,10,.08) 70%); }
+@media (max-width: 620px) {
+  .hero-shade { background: linear-gradient(0deg, rgba(8,17,10,.94), rgba(8,17,10,.38) 82%); }
+  .nav-row { padding-block: 4px; }
+  .site-chrome { width: 100%; }
+}
