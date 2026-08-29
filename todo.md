@@ -38,6 +38,6 @@
 - [x] Implementar un selector dinámico y accesible de etapas de obra, con transiciones reducidas cuando el visitante lo prefiera.
 - [x] Integrar la cronología de proceso en la portada y enlazarla a las rutas de proyecto y estimado existentes.
 - [x] Validar la cronología en escritorio y móvil, además de ejecutar tipos, pruebas, compilación y actualización del repositorio.
-- [ ] Sincronizar la versión validada con el repositorio de destino g3lasio/rosales-costruction sin desplegarla.
-- [ ] Configurar el remoto de destino y subir allí la versión validada.
-- [ ] Verificar en GitHub que el repositorio de destino contiene los archivos completos del proyecto.
+- [x] Sincronizar la versión validada con el repositorio de destino g3lasio/rosales-costruction sin desplegarla.
+- [x] Configurar el remoto de destino y subir allí la versión validada.
+- [x] Verificar en GitHub que el repositorio de destino contiene los archivos completos del proyecto.
