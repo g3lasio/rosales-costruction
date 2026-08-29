@@ -25,3 +25,12 @@
 - [x] Ejecutar comprobación de tipos, pruebas y build de producción.
 - [x] Preparar un README específico del proyecto con instalación local, integración LeadPrime y guía de Railway.
 - [x] Crear un repositorio privado, publicar el código sin secretos y documentar el despliegue en Railway.
+- [x] Replantear la dirección visual como una experiencia de proyectos más dinámica, ordenada y orientada a descubrimiento.
+- [x] Mantener el encabezado de marca y el CTA de estimado visibles durante todo el desplazamiento en escritorio y móvil.
+- [x] Construir un comparador interactivo antes/después con proyectos reales, controles de teclado y alternativas accesibles.
+- [x] Reorganizar la portada para priorizar proyectos, proceso de trabajo, radio de servicio de 60 millas y rutas de conversión.
+- [x] Actualizar la página de áreas de servicio para expresar cobertura de 60 millas desde Vallejo sin inventar localidades no confirmadas.
+- [x] Ampliar las políticas de privacidad, términos de uso y consentimiento de comunicaciones con contenido bilingüe pertinente.
+- [x] Añadir estados, navegación y microinteracciones que hagan la experiencia más dinámica sin afectar rendimiento ni movimiento reducido.
+- [x] Volver a validar LeadPrime, formularios, SEO, responsive, accesibilidad, compilación y repositorio tras el rediseño.
+- [x] Añadir la página de términos a los recursos de descubrimiento e indexación públicos.

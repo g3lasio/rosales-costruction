@@ -12,6 +12,7 @@ const standard: Record<string, HeadMeta> = {
   "/reviews": { title: `Reviews | ${site}`, description: "Read public reviews and see where to find Rosales Landscaping & Construction online.", canonicalPath: "/reviews" },
   "/contact": { title: `Contact | ${site}`, description: "Contact Rosales Landscaping & Construction to discuss an outdoor project in the North Bay.", canonicalPath: "/contact" },
   "/privacy": { title: `Privacy Policy | ${site}`, description: "How Rosales handles information submitted through this website.", canonicalPath: "/privacy" },
+  "/terms": { title: `Terms of Use | ${site}`, description: "Terms for using the Rosales Landscaping & Construction website.", canonicalPath: "/terms" },
 };
 
 export function prefetchForPath(url: string): HeadMeta {

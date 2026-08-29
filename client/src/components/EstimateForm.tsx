@@ -40,6 +40,6 @@ export function EstimateForm({ defaultService }: { defaultService?: string }) {
     <label className="consent"><input name="consent" type="checkbox" /><span>{t.consent}</span></label>
     {contactError && <p className="form-error" role="alert">{contactError}</p>}{mutation.error && <p className="form-error" role="alert">{t.error}</p>}
     <button className="button button-primary" type="submit" disabled={mutation.isPending}>{mutation.isPending ? <><LoaderCircle size={17} className="spin" /> {t.sending}</> : t.submit}</button>
-    <p className="form-privacy">{t.privacyNote} <Link href="/privacy/">{locale === "en" ? "Privacy policy" : "Política de privacidad"}</Link>.</p>
+    <p className="form-privacy">{t.privacyNote} <Link href="/privacy/">{locale === "en" ? "Privacy policy" : "Política de privacidad"}</Link> {locale === "en" ? "and" : "y"} <Link href="/terms/">{locale === "en" ? "terms of use" : "términos de uso"}</Link>.</p>
   </form>;
 }

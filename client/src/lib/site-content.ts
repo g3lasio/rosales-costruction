@@ -19,6 +19,8 @@ export const assets = {
   landscape: "/manus-storage/238_1-2_a7794375.jpg",
   drainage: "/manus-storage/235_f4ab67a5-5ce3-4c97-a93a-043d7a9f7b9e_b565dc87.jpg",
   walkway: "/manus-storage/202_WhatsApp-Image-2023-09-25-at-3.45.51-PM-1_7279c823.webp",
+  frontApproachBefore: "/manus-storage/rosales-front-approach-before_9874bcc0.webp",
+  frontApproachAfter: "/manus-storage/rosales-front-approach-after_26077194.webp",
 };
 
 export const copy = {
@@ -26,21 +28,21 @@ export const copy = {
     estimate: "Request an estimate", call: "Call (707) 738-1746", explore: "Explore our work", chat: "Ask our project assistant",
     home: "Home", services: "Services", projects: "Projects", about: "About", areas: "Areas", reviews: "Reviews", contact: "Contact",
     navLabel: "Primary navigation", language: "Language", menu: "Menu", close: "Close", more: "View service", back: "All services",
-    license: "California C-27 License #1093687", serviceArea: "Napa · Vallejo · North Bay", residential: "Residential & commercial",
+    license: "California C-27 License #1093687", serviceArea: "Napa · Vallejo · North Bay · 60-mile service radius", residential: "Residential & commercial",
     formTitle: "Tell us about your project", formText: "Share a few details and our team will follow up about your estimate.",
     fullName: "Full name", phone: "Phone", email: "Email", address: "Project address", city: "City", service: "Service", timeline: "When would you like to start?", message: "Project details", consent: "I agree to receive text messages about this request. Message and data rates may apply.",
     submit: "Send estimate request", sending: "Sending your request…", successTitle: "Your request is on its way.", successText: "Thank you. We received your project details and will be in touch soon.", error: "We couldn’t send your request. Please call us at (707) 738-1746.", required: "Please provide a phone number or email address.",
-    privacyNote: "By submitting, you agree that Rosales may contact you about this request. Review our privacy policy.",
+    privacyNote: "By submitting, you agree that Rosales may contact you about this request. Review our privacy policy and terms of use.",
   },
   es: {
     estimate: "Solicitar estimado", call: "Llamar al (707) 738-1746", explore: "Ver proyectos", chat: "Hablar con el asistente", 
     home: "Inicio", services: "Servicios", projects: "Proyectos", about: "Nosotros", areas: "Áreas", reviews: "Reseñas", contact: "Contacto",
     navLabel: "Navegación principal", language: "Idioma", menu: "Menú", close: "Cerrar", more: "Ver servicio", back: "Todos los servicios",
-    license: "Licencia C-27 de California #1093687", serviceArea: "Napa · Vallejo · North Bay", residential: "Residencial y comercial",
+    license: "Licencia C-27 de California #1093687", serviceArea: "Napa · Vallejo · North Bay · Radio de servicio de 60 millas", residential: "Residencial y comercial",
     formTitle: "Cuéntenos sobre su proyecto", formText: "Comparta algunos detalles y nuestro equipo le contactará acerca de su estimado.",
     fullName: "Nombre completo", phone: "Teléfono", email: "Correo electrónico", address: "Dirección del proyecto", city: "Ciudad", service: "Servicio", timeline: "¿Cuándo desea comenzar?", message: "Detalles del proyecto", consent: "Acepto recibir mensajes de texto sobre esta solicitud. Pueden aplicar tarifas de mensajes y datos.",
     submit: "Enviar solicitud de estimado", sending: "Enviando su solicitud…", successTitle: "Su solicitud fue enviada.", successText: "Gracias. Recibimos los detalles de su proyecto y le contactaremos pronto.", error: "No pudimos enviar su solicitud. Por favor llámenos al (707) 738-1746.", required: "Proporcione un teléfono o correo electrónico.",
-    privacyNote: "Al enviar, acepta que Rosales le contacte acerca de esta solicitud. Consulte nuestra política de privacidad.",
+    privacyNote: "Al enviar, acepta que Rosales le contacte acerca de esta solicitud. Consulte nuestra política de privacidad y términos de uso.",
   },
 } as const;
 
