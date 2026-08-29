@@ -1,0 +1,27 @@
+# Project TODO
+
+- [x] Configurar las variables privadas de LeadPrime únicamente en el servidor y crear ejemplos de entorno sin secretos.
+- [x] Documentar el contrato del webhook, el manejo de errores y el proceso de pruebas para Railway.
+- [x] Incorporar el logotipo aprobado y una selección curada de fotografías reales de proyectos como activos externos del sitio.
+- [x] Definir el sistema visual premium de Rosales, incluyendo paleta accesible, tipografía, espaciado y comportamiento responsive.
+- [x] Implementar inglés como idioma inicial y un selector English/Español persistente que traduce navegación, páginas, formularios, CTAs y metadatos.
+- [x] Construir una navegación pública clara, responsive y accesible con teléfono clicable, acceso a estimado y acceso al chat de IA.
+- [x] Crear una página de inicio orientada a artesanía, prueba visual, licencia, servicios, proyectos, proceso y conversión.
+- [x] Crear páginas semánticas y bilingües para landscaping, pavers, concrete, retaining walls, synthetic turf, fences and gates, drainage and irrigation, decks, stonework y driveways.
+- [x] Crear páginas bilingües de proyectos, empresa, áreas de servicio, reseñas, contacto y privacidad.
+- [x] Crear formularios de estimado conscientes del servicio con validación, campos de proyecto, atribución de página/UTM, control antispam, consentimiento SMS opcional y estados de éxito/error accesibles.
+- [x] Implementar un proxy del lado servidor que envía formularios al webhook de LeadPrime sin exponer la credencial en el navegador ni en Git.
+- [x] Verificar de forma automatizada que las variables privadas de LeadPrime no llegan al bundle cliente.
+- [x] Integrar el LeadPrime AI Embed Kit y retirar por completo la experiencia previa de WhatsApp/Chaty.
+- [x] Añadir SEO técnico: títulos y descripciones bilingües, canonical, sitemap, robots, etiquetas sociales, datos estructurados, redirecciones y llms.txt informativo.
+- [x] Añadir texto alternativo descriptivo a las imágenes y respetar preferencias de movimiento reducido, foco de teclado y contraste accesible.
+- [x] Añadir manejo de fallo del Embed Kit de LeadPrime y un fallback visible para los CTAs de chat.
+- [x] Convertir las rutas públicas a renderizado del lado servidor para SEO y metadatos fiables en primera carga.
+- [x] Verificar la matriz de redirecciones heredadas y documentar las rutas preservadas o retiradas.
+- [x] Generar favicon de Rosales y alinear las URLs de sitemap con las URLs canónicas de producción.
+- [x] Ejecutar y documentar una auditoría de contraste y accesibilidad de la interfaz.
+- [x] Escribir pruebas Vitest de validación del formulario, seguridad de secretos y dos envíos sintéticos claramente etiquetados.
+- [x] Verificar visualmente las páginas principales en escritorio y móvil, y corregir errores de interfaz o consola.
+- [x] Ejecutar comprobación de tipos, pruebas y build de producción.
+- [x] Preparar un README específico del proyecto con instalación local, integración LeadPrime y guía de Railway.
+- [ ] Crear un repositorio privado, publicar el código sin secretos y documentar el despliegue en Railway.

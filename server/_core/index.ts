@@ -36,6 +36,18 @@ async function startServer() {
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
   registerStorageProxy(app);
   registerOAuthRoutes(app);
+  const legacyRedirects: Record<string, string> = {
+    "/gallery/": "/projects",
+    "/privacy-policy/": "/privacy",
+    "/hello-world/": "/",
+    "/category/uncategorized/": "/",
+  };
+  app.use((req, res, next) => {
+    const destination = legacyRedirects[req.path];
+    if (destination) return res.redirect(301, destination);
+    if (req.path.startsWith("/author/") || req.path.startsWith("/metform-form/")) return res.redirect(301, "/");
+    next();
+  });
   // tRPC API
   app.use(
     "/api/trpc",
