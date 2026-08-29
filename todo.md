@@ -34,3 +34,7 @@
 - [x] Añadir estados, navegación y microinteracciones que hagan la experiencia más dinámica sin afectar rendimiento ni movimiento reducido.
 - [x] Volver a validar LeadPrime, formularios, SEO, responsive, accesibilidad, compilación y repositorio tras el rediseño.
 - [x] Añadir la página de términos a los recursos de descubrimiento e indexación públicos.
+- [x] Definir una cronología visual bilingüe de preparación, construcción y entrega usando únicamente evidencia real de Rosales.
+- [x] Implementar un selector dinámico y accesible de etapas de obra, con transiciones reducidas cuando el visitante lo prefiera.
+- [x] Integrar la cronología de proceso en la portada y enlazarla a las rutas de proyecto y estimado existentes.
+- [x] Validar la cronología en escritorio y móvil, además de ejecutar tipos, pruebas, compilación y actualización del repositorio.
