@@ -24,4 +24,4 @@
 - [x] Verificar visualmente las páginas principales en escritorio y móvil, y corregir errores de interfaz o consola.
 - [x] Ejecutar comprobación de tipos, pruebas y build de producción.
 - [x] Preparar un README específico del proyecto con instalación local, integración LeadPrime y guía de Railway.
-- [ ] Crear un repositorio privado, publicar el código sin secretos y documentar el despliegue en Railway.
+- [x] Crear un repositorio privado, publicar el código sin secretos y documentar el despliegue en Railway.
