@@ -45,11 +45,11 @@
 - [x] Auditar márgenes, anchos, overflow, dependencias de fuentes y referencias de assets.
 - [x] Auditar todas las combinaciones de fondo y texto y corregir las que no sean legibles.
 - [x] Corregir el layout para que los espaciados dependan del código local y no de servicios externos.
-- [ ] Validar escritorio y móvil, ejecutar tipos, pruebas y build, y actualizar el repositorio de destino.
+- [x] Validar escritorio y móvil, ejecutar tipos, pruebas y build, y actualizar el repositorio de destino.
 - [x] Eliminar la dependencia de Google Fonts en producción mediante fuentes empaquetadas o una pila local equivalente.
 - [x] Añadir una comprobación de producción que falle de forma visible si el HTML no enlaza la hoja CSS compilada.
 - [x] Reforzar overlays y colores explícitos en secciones con texto sobre fotografía o fondos oscuros.
-- [ ] Validar el artefacto final, capturas responsive y publicar la corrección en main del repositorio de destino.
+- [x] Validar el artefacto final, capturas responsive y publicar la corrección en main del repositorio de destino.
 - [x] Corregir el desajuste entre el árbol SSR y el árbol hidratado que elimina o regenera la interfaz en producción.
 - [x] Proteger el acceso a localStorage del hook de autenticación para que SSR no falle antes de renderizar el layout público.
 - [x] Implementar un estado visible y claro cuando falte el CSS crítico de producción, en lugar de depender sólo del log del servidor.
