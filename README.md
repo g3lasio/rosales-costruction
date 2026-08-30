@@ -47,7 +47,7 @@ Copy `.env.example` for local development or configure the equivalent variables 
 
 ## Production images
 
-Every image the site references lives in `client/public/images/` and is served from `/images/...`. The repository currently ships lightweight branded placeholders (marked internally with `rosales-placeholder`); hydrate the real project photography once, from any machine with normal internet access:
+Every image the site references lives in `client/public/images/` and is served from `/images/...`. The repository ships lightweight branded placeholders (marked internally with `rosales-placeholder`), and `pnpm build` runs `fetch-assets --best-effort` first, so a deploy machine with internet access (Railway) recovers and bakes in the real photography automatically. To pin the real photos in Git instead, hydrate them once from any machine with normal internet access:
 
 ```bash
 pnpm fetch:assets            # recovers, optimizes, and writes the 15 real photos

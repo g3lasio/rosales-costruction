@@ -24,7 +24,9 @@ Las 15 imágenes del sitio se referenciaban bajo `/manus-storage/...`, una ruta 
 
 ## Qué falta para el 10/10 visual
 
-Un solo paso, desde cualquier máquina con internet normal:
+**Actualización: la hidratación ahora es automática en cada deploy.** `pnpm build` ejecuta primero `node scripts/fetch-assets.mjs --best-effort`: en Railway (que sí tiene internet) descarga las fotos reales desde el WordPress legado antes de compilar, así el deploy sale con la fotografía real sin ningún paso manual. Si alguna foto no es recuperable en línea (por ejemplo el par antes/después generado fuera de WordPress), esa ruta conserva el placeholder hasta hidratarla manualmente.
+
+Para dejarlas fijadas en el repositorio (recomendado, elimina la dependencia del sitio legado), un solo paso desde cualquier máquina con internet normal:
 
 ```bash
 pnpm install

@@ -35,8 +35,13 @@ const WP_ORIGIN = (process.env.WP_ORIGIN || "https://rosaleslandscapingandconstr
 
 const args = process.argv.slice(2);
 const checkOnly = args.includes("--check");
+// --best-effort: recover whatever is reachable and always exit 0. Used by the
+// production build so a deploy machine with internet (Railway) hydrates the
+// real photography automatically, while offline builds keep the placeholders.
+const bestEffort = args.includes("--best-effort");
 const fromDirIndex = args.indexOf("--from-dir");
 const fromDir = fromDirIndex !== -1 ? path.resolve(args[fromDirIndex + 1] || ".") : null;
+const FETCH_TIMEOUT_MS = Number(process.env.ASSET_FETCH_TIMEOUT_MS || 15000);
 
 function isPlaceholder(filePath) {
   if (!fs.existsSync(filePath)) return false;
@@ -54,7 +59,7 @@ function listFilesRecursive(dir) {
 }
 
 async function fetchBuffer(url, headers = {}) {
-  const resp = await fetch(url, { headers, redirect: "follow" });
+  const resp = await fetch(url, { headers, redirect: "follow", signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) });
   if (!resp.ok) throw new Error(`HTTP ${resp.status} for ${url}`);
   const buf = Buffer.from(await resp.arrayBuffer());
   if (buf.length < 1024) throw new Error(`Suspiciously small response (${buf.length} bytes) from ${url}`);
@@ -85,29 +90,60 @@ async function fetchFromForge(asset) {
 let wpMediaCache = null;
 async function loadWordPressMedia() {
   if (wpMediaCache) return wpMediaCache;
-  const media = [];
-  for (let page = 1; page <= 10; page++) {
-    const url = `${WP_ORIGIN}/wp-json/wp/v2/media?per_page=100&page=${page}&_fields=source_url`;
-    const resp = await fetch(url, { headers: { Accept: "application/json" } });
-    if (!resp.ok) break;
-    const batch = await resp.json();
-    if (!Array.isArray(batch) || batch.length === 0) break;
-    media.push(...batch.map(item => item.source_url).filter(Boolean));
-    if (batch.length < 100) break;
+  const media = new Set();
+  // 1) Public media REST API (most WordPress sites expose it).
+  try {
+    for (let page = 1; page <= 10; page++) {
+      const url = `${WP_ORIGIN}/wp-json/wp/v2/media?per_page=100&page=${page}&_fields=source_url,media_details`;
+      const resp = await fetch(url, { headers: { Accept: "application/json" }, signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) });
+      if (!resp.ok) break;
+      const batch = await resp.json();
+      if (!Array.isArray(batch) || batch.length === 0) break;
+      for (const item of batch) if (item.source_url) media.add(item.source_url);
+      if (batch.length < 100) break;
+    }
+  } catch { /* fall through to HTML scraping */ }
+  // 2) Fallback: scrape site pages for /wp-content/uploads URLs.
+  if (media.size === 0) {
+    for (const page of ["/", "/gallery/", "/projects/", "/services/", "/about/"]) {
+      try {
+        const resp = await fetch(WP_ORIGIN + page, { signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) });
+        if (!resp.ok) continue;
+        const html = await resp.text();
+        for (const match of html.matchAll(/(?:https?:\/\/[^"'\s)]+)?\/wp-content\/uploads\/[^"'\s)]+?\.(?:jpe?g|png|webp)/gi)) {
+          media.add(match[0].startsWith("http") ? match[0] : WP_ORIGIN + match[0]);
+        }
+      } catch { /* page unreachable; try the next one */ }
+    }
   }
-  wpMediaCache = media;
-  return media;
+  wpMediaCache = [...media];
+  return wpMediaCache;
 }
 
+const stemOf = (name) => decodeURIComponent(name).replace(/\.[a-z0-9]+$/i, "").replace(/-scaled$/i, "").toLowerCase();
+
 async function fetchFromWordPress(asset) {
-  const wantedStem = asset.originalFile.replace(/\.[a-z0-9]+$/i, "").toLowerCase();
+  const wanted = stemOf(asset.originalFile);
   const media = await loadWordPressMedia().catch(() => []);
-  const match = media.find(url => {
-    const stem = decodeURIComponent(path.basename(new URL(url).pathname)).replace(/\.[a-z0-9]+$/i, "").replace(/-scaled$/, "").toLowerCase();
-    return stem === wantedStem;
-  });
-  if (!match) return null;
-  return { buffer: await fetchBuffer(match), source: `WordPress media ${match}` };
+  const match =
+    media.find(url => stemOf(path.basename(new URL(url).pathname)) === wanted) ||
+    // WordPress size variants (e.g. name-768x514.jpg) of the wanted file.
+    media.find(url => stemOf(path.basename(new URL(url).pathname)).replace(/-\d+x\d+$/, "") === wanted);
+  if (match) return { buffer: await fetchBuffer(match), source: `WordPress media ${match}` };
+  // 3) Direct guess from the WordPress edit timestamp embedded in the filename
+  //    (name-e<ms>.ext files live under /wp-content/uploads/YYYY/MM/).
+  const stamp = asset.originalFile.match(/-e(\d{13})/);
+  if (stamp) {
+    const date = new Date(Number(stamp[1]));
+    for (const offset of [0, -1, 1]) {
+      const guess = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + offset, 1));
+      const url = `${WP_ORIGIN}/wp-content/uploads/${guess.getUTCFullYear()}/${String(guess.getUTCMonth() + 1).padStart(2, "0")}/${encodeURIComponent(asset.originalFile)}`;
+      try {
+        return { buffer: await fetchBuffer(url), source: `WordPress uploads ${url}` };
+      } catch { /* try the adjacent month */ }
+    }
+  }
+  return null;
 }
 
 async function optimize(buffer, asset) {
@@ -177,12 +213,12 @@ async function main() {
   if (failures > 0) {
     console.error(`\n${failures} asset(s) could not be recovered automatically.`);
     console.error("Provide the missing photos in a folder and re-run with: pnpm fetch:assets --from-dir <folder>");
-    process.exit(1);
+    process.exit(bestEffort ? 0 : 1);
   }
   console.log("\nAll assets hydrated. Commit client/public/images so production serves the real photography.");
 }
 
 main().catch(error => {
   console.error(error);
-  process.exit(1);
+  process.exit(bestEffort ? 0 : 1);
 });
