@@ -9,6 +9,7 @@ export const email = "rosaleslandscaping707@gmail.com";
 // to hydrate the real project photography into that folder).
 export const assets = {
   logo: "/images/rosales-logo.png",
+  logoDark: "/images/rosales-logo-dark.png",
   hero: "/images/paver-driveway-hero.webp",
   turf: "/images/synthetic-turf-garden.webp",
   stoneWall: "/images/granite-retaining-wall.webp",
