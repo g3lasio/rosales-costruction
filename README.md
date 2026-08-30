@@ -45,6 +45,19 @@ Copy `.env.example` for local development or configure the equivalent variables 
 | `CANONICAL_ORIGIN` | Yes in production | Public origin, normally `https://rosaleslandscapingandconstruction.com`. |
 | `SITE_NAME` | Yes in production | `Rosales Landscaping & Construction`. |
 
+## Production images
+
+Every image the site references lives in `client/public/images/` and is served from `/images/...`. The repository currently ships lightweight branded placeholders (marked internally with `rosales-placeholder`); hydrate the real project photography once, from any machine with normal internet access:
+
+```bash
+pnpm fetch:assets            # recovers, optimizes, and writes the 15 real photos
+pnpm fetch:assets --check    # reports which files are real photography (expect 15/15)
+```
+
+The recovery sources and final filenames are declared in `scripts/asset-manifest.json`; `scripts/fetch-assets.mjs` tries a local folder (`--from-dir`), the previous Manus/Forge storage (via `BUILT_IN_FORGE_API_URL`/`KEY`), and the legacy WordPress media library, in that order. Placeholders are regenerated with `node scripts/generate-placeholders.mjs`. Real photography is never overwritten. Legacy `/manus-storage/*` URLs answer with a 301 to the new `/images/...` locations (`server/assetRedirects.ts`), and `server/assets.integrity.test.ts` keeps the references, redirects, and manifest aligned.
+
+See [`docs/production-repair-2026-08.md`](docs/production-repair-2026-08.md) for the full repair and validation report.
+
 ## Railway deployment
 
 Connect this private repository in Railway, add the environment variables above, set the build command to `pnpm build`, and set the start command to `pnpm start`. Do not hardcode a port: Railway supplies `PORT`, which the server reads automatically.

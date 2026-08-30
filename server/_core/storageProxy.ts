@@ -10,7 +10,9 @@ export function registerStorageProxy(app: Express) {
     }
 
     if (!ENV.forgeApiUrl || !ENV.forgeApiKey) {
-      res.status(500).send("Storage proxy not configured");
+      // Production (Railway) intentionally has no Forge credentials; the
+      // site's own assets live under /images. Anything else is simply gone.
+      res.status(404).send("Not found");
       return;
     }
 

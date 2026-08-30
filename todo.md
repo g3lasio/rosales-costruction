@@ -55,3 +55,10 @@
 - [x] Implementar un estado visible y claro cuando falte el CSS crítico de producción, en lugar de depender sólo del log del servidor.
 - [x] Añadir una prueba automatizada que verifique el enlace CSS en el HTML SSR y el fallback visible cuando el asset no exista.
 - [x] Añadir una prueba de integración que consulte una ruta SSR real y confirme el layout y el enlace de stylesheet en el HTML servido.
+- [x] Migrar las 15 referencias de imágenes de /manus-storage a /images con archivos versionados en client/public/images.
+- [x] Crear el pipeline pnpm fetch:assets (manifiesto + recuperación desde carpeta local, Forge o WordPress legado + optimización sharp) para hidratar la fotografía real.
+- [x] Generar placeholders de marca con marcador binario para mantener producción estable (HTTP 200) hasta hidratar las fotos reales.
+- [x] Redirigir con 301 las rutas antiguas /manus-storage a /images y responder 404 (no 500) a claves desconocidas.
+- [x] Reparar el header/CTA fijo: sustituir overflow hidden por overflow-x clip en site-shell y body para no anular position sticky.
+- [x] Eliminar el runtime de Manus del build de producción (index.html de 367 KB a 0.5 KB) y el script de analytics con placeholders sin valor.
+- [x] Añadir server/assets.integrity.test.ts y hacer hermético vite.styles.test.ts; ejecutar tipos, pruebas, build, integración SSR y auditoría de navegador en 390/768/1280/1440 px.

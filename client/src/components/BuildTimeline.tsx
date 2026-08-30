@@ -36,7 +36,7 @@ export function BuildTimeline() {
           {stages.map((item, index) => { const ItemIcon = item.icon; const isActive = index === active; return <button key={item.number} role="tab" aria-selected={isActive} aria-controls="timeline-stage-panel" id={`timeline-tab-${index}`} className={`timeline-step ${isActive ? "is-active" : ""}`} onClick={() => setActive(index)}><span className="timeline-index">{item.number}</span><span className="timeline-step-icon"><ItemIcon size={18} /></span><span><small>{item.label[locale]}</small><strong>{item.title[locale]}</strong></span><ArrowRight className="timeline-arrow" size={17} /></button>; })}
         </div>
         <article id="timeline-stage-panel" className="timeline-stage" role="tabpanel" aria-labelledby={`timeline-tab-${active}`} tabIndex={0}>
-          <div className="timeline-photo-stack" aria-hidden="true"><span /><span /><img src={stage.image} alt="" /></div>
+          <div className="timeline-photo-stack" aria-hidden="true"><span /><span /><img src={stage.image} alt="" loading="lazy" decoding="async" /></div>
           <div className="timeline-stage-copy"><div className="timeline-stage-kicker"><Icon size={17} /><span>{stage.number} / 03 · {stage.label[locale]}</span></div><h3>{stage.title[locale]}</h3><p>{stage.body[locale]}</p><div className="timeline-stage-note">{stage.note[locale]}</div><Link href="/contact/#estimate" className="text-link">{t.estimate}<ArrowRight size={16} /></Link></div>
         </article>
       </div>

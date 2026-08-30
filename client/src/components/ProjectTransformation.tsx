@@ -27,8 +27,8 @@ export function ProjectTransformation({ compact = false }: { compact?: boolean }
       </div>
       <figure className="transformation-figure">
         <div className="comparison-stage" style={stageStyle}>
-          <img className="comparison-image" src={assets.frontApproachAfter} alt={english ? "Completed concrete front path at a Rosales project" : "Sendero frontal de concreto terminado en un proyecto de Rosales"} />
-          <img className="comparison-image comparison-before" src={assets.frontApproachBefore} alt={english ? "Prepared front approach before Rosales concrete path installation" : "Acceso frontal preparado antes de la instalación del sendero de concreto por Rosales"} />
+          <img className="comparison-image" src={assets.frontApproachAfter} alt={english ? "Completed concrete front path at a Rosales project" : "Sendero frontal de concreto terminado en un proyecto de Rosales"} loading="lazy" decoding="async" />
+          <img className="comparison-image comparison-before" src={assets.frontApproachBefore} alt={english ? "Prepared front approach before Rosales concrete path installation" : "Acceso frontal preparado antes de la instalación del sendero de concreto por Rosales"} loading="lazy" decoding="async" />
           <div className="comparison-divider" aria-hidden="true"><span><GripVertical size={18} /></span></div>
           <span className="comparison-label comparison-label-before">{english ? "Before · prepared site" : "Antes · sitio preparado"}</span>
           <span className="comparison-label comparison-label-after">{english ? "After · finished path" : "Después · sendero terminado"}</span>

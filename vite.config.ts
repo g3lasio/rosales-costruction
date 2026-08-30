@@ -150,7 +150,13 @@ function vitePluginManusDebugCollector(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector()];
+// The Manus runtime and debug collector exist for the Manus preview host.
+// In the production build they only add weight (the runtime inlines ~350 KB
+// into index.html, shipped with every SSR response), so they stay dev-only.
+const isProductionBuild = process.env.NODE_ENV === "production";
+const plugins = isProductionBuild
+  ? [react(), tailwindcss(), jsxLocPlugin()]
+  : [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector()];
 
 export default defineConfig({
   plugins,

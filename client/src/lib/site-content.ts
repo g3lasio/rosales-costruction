@@ -5,22 +5,24 @@ export const phone = "(707) 738-1746";
 export const phoneHref = "tel:+17077381746";
 export const email = "rosaleslandscaping707@gmail.com";
 
+// Production assets served from client/public/images (see scripts/fetch-assets.mjs
+// to hydrate the real project photography into that folder).
 export const assets = {
-  logo: "/manus-storage/124_Diseno-sin-titulo-3-e1729819973975_461b5f1f.png",
-  hero: "/manus-storage/244_Pavers-e1763091483640_ac92b920.jpg",
-  turf: "/manus-storage/236_10-1_d74f095c.jpg",
-  stoneWall: "/manus-storage/385_Granite-Stone-Walls-768x514-1_2616c85c.jpg",
-  concrete: "/manus-storage/200_d0b50ef0-cd50-4617-8d15-3768c781c6c7_1b0a175f.webp",
-  blockWall: "/manus-storage/245_Cinder-Block-Retaining-Walls_328b98c6.png",
-  flagstone: "/manus-storage/209_4bf2e5d0-ae9a-422e-a2d3-79264ce55430_8ea60a68.webp",
-  kitchen: "/manus-storage/211_7579fa85-a37e-4d88-99fb-a8337440db8a_b7ce47b9.webp",
-  deck: "/manus-storage/239_8-2_91ff976f.jpg",
-  fence: "/manus-storage/240_2-2_34a7691b.jpg",
-  landscape: "/manus-storage/238_1-2_a7794375.jpg",
-  drainage: "/manus-storage/235_f4ab67a5-5ce3-4c97-a93a-043d7a9f7b9e_b565dc87.jpg",
-  walkway: "/manus-storage/202_WhatsApp-Image-2023-09-25-at-3.45.51-PM-1_7279c823.webp",
-  frontApproachBefore: "/manus-storage/rosales-front-approach-before_9874bcc0.webp",
-  frontApproachAfter: "/manus-storage/rosales-front-approach-after_26077194.webp",
+  logo: "/images/rosales-logo.png",
+  hero: "/images/paver-driveway-hero.webp",
+  turf: "/images/synthetic-turf-garden.webp",
+  stoneWall: "/images/granite-retaining-wall.webp",
+  concrete: "/images/concrete-patio-process.webp",
+  blockWall: "/images/block-retaining-wall.webp",
+  flagstone: "/images/flagstone-patio.webp",
+  kitchen: "/images/outdoor-kitchen-masonry.webp",
+  deck: "/images/wood-deck-steps.webp",
+  fence: "/images/wood-fence.webp",
+  landscape: "/images/landscape-path-planting.webp",
+  drainage: "/images/drainage-trench.webp",
+  walkway: "/images/garden-walkway.webp",
+  frontApproachBefore: "/images/front-approach-before.webp",
+  frontApproachAfter: "/images/front-approach-after.webp",
 };
 
 export const copy = {

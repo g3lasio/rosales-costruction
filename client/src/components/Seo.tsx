@@ -23,7 +23,7 @@ export function Seo({ title, description, path, image, schema }: SeoProps) {
     setMeta("meta[property='og:title']", title);
     setMeta("meta[property='og:description']", description);
     setMeta("meta[property='og:url']", canonical);
-    if (image) setMeta("meta[property='og:image']", image);
+    if (image) setMeta("meta[property='og:image']", image.startsWith("/") ? `${siteUrl}${image}` : image);
     let link = document.head.querySelector("link[rel='canonical']") as HTMLLinkElement | null;
     if (!link) { link = document.createElement("link"); link.rel = "canonical"; document.head.appendChild(link); }
     link.href = canonical;
