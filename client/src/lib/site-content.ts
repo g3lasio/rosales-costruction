@@ -4,6 +4,8 @@ export type Copy = Record<Locale, string>;
 export const phone = "(707) 738-1746";
 export const phoneHref = "tel:+17077381746";
 export const email = "rosaleslandscaping707@gmail.com";
+export const googleProfileUrl = "https://g.page/r/CRBWklLOWBW9EBM";
+export const siteUrl = "https://rosaleslandscapingca.com";
 
 // Production assets served from client/public/images (see scripts/fetch-assets.mjs
 // to hydrate the real project photography into that folder).
@@ -69,7 +71,7 @@ export const navItems = [
 ] as const;
 
 export const socialLinks = [
-  { label: "Google", href: "https://www.google.com/maps/place/Rosales+Landscaping/@38.120076,-122.316679,15z" },
+  { label: "Google", href: googleProfileUrl },
   { label: "Facebook", href: "https://www.facebook.com/people/Rosales-Landscaping-Construction-Inc/61551280705514/" },
   { label: "Instagram", href: "https://www.instagram.com/rosaleslandscaping_inc/" },
   { label: "Yelp", href: "https://www.yelp.com.mx/biz/rosales-landscaping-napa" },

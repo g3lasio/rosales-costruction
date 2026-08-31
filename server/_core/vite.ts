@@ -8,7 +8,7 @@ import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
 import type { HeadMeta } from "../../client/src/ssr/prefetch";
 
-const origin = process.env.CANONICAL_ORIGIN || "https://rosaleslandscapingandconstruction.com";
+const origin = process.env.CANONICAL_ORIGIN || "https://rosaleslandscapingca.com";
 const siteName = process.env.SITE_NAME || "Rosales Landscaping & Construction";
 const escapeHtml = (value: string) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;").replace(/'/g, "&#39;");
 function headTags(head: HeadMeta) {

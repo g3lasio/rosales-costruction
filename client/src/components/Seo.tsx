@@ -1,8 +1,7 @@
 import { useEffect } from "react";
+import { siteUrl } from "@/lib/site-content";
 
 type SeoProps = { title: string; description: string; path: string; image?: string; schema?: Record<string, unknown> };
-const siteUrl = "https://rosaleslandscapingandconstruction.com";
-
 function setMeta(selector: string, content: string) {
   let tag = document.head.querySelector(selector) as HTMLMetaElement | null;
   if (!tag) {

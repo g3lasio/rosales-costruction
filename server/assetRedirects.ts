@@ -19,8 +19,8 @@ export const legacyAssetRedirects: Record<string, string> = {
   "238_1-2_a7794375.jpg": "/images/landscape-path-planting.webp",
   "235_f4ab67a5-5ce3-4c97-a93a-043d7a9f7b9e_b565dc87.jpg": "/images/drainage-trench.webp",
   "202_WhatsApp-Image-2023-09-25-at-3.45.51-PM-1_7279c823.webp": "/images/garden-walkway.webp",
-  "rosales-front-approach-before_9874bcc0.webp": "/images/front-approach-before.webp",
-  "rosales-front-approach-after_26077194.webp": "/images/front-approach-after.webp",
+  "5-8.jpg": "/images/front-approach-before.webp",
+  "5-5.jpg": "/images/front-approach-after.webp",
 };
 
 export function registerLegacyAssetRedirects(app: Express) {

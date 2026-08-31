@@ -27,7 +27,7 @@ The repository deliberately avoids committed `.env` files. The Railway variable 
 | Build command | `pnpm build` |
 | Start command | `pnpm start` |
 | Runtime | Node 22 or later. Railway must supply `PORT`; the server reads it automatically. |
-| Required variables | `LEADPRIME_WEBHOOK_URL`, `LEADPRIME_EMBED_TOKEN`, `CANONICAL_ORIGIN=https://rosaleslandscapingandconstruction.com`, `SITE_NAME=Rosales Landscaping & Construction`. |
+| Required variables | `LEADPRIME_WEBHOOK_URL`, `LEADPRIME_EMBED_TOKEN`, `CANONICAL_ORIGIN=https://rosaleslandscapingca.com`, `SITE_NAME=Rosales Landscaping & Construction`. |
 | Optional variable | `LEADPRIME_WEBHOOK_HMAC_SECRET` only if LeadPrime is configured to require signing. |
 | Health verification | Open the home page, a service page, `/sitemap.xml`, `/robots.txt`, and `/llms.txt`. Confirm the chat bubble appears. |
 | Lead verification | Submit a consented internal test with a designated team inbox or run the intentionally gated live test with `LEADPRIME_LIVE_TESTS=true`; verify one corresponding lead in LeadPrime, then return the flag to `false`. |

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rosaleslandscapingandconstruction.com/sitemap.xml
+Sitemap: https://rosaleslandscapingca.com/sitemap.xml

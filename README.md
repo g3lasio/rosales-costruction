@@ -42,7 +42,7 @@ Copy `.env.example` for local development or configure the equivalent variables 
 | `LEADPRIME_WEBHOOK_URL` | Yes | Private server-side LeadPrime destination for estimate requests. |
 | `LEADPRIME_EMBED_TOKEN` | Yes | Runtime identifier for the official LeadPrime Embed Kit. |
 | `LEADPRIME_WEBHOOK_HMAC_SECRET` | Conditional | Used only if the LeadPrime webhook requires signature verification. |
-| `CANONICAL_ORIGIN` | Yes in production | Public origin, normally `https://rosaleslandscapingandconstruction.com`. |
+| `CANONICAL_ORIGIN` | Yes in production | Public origin, normally `https://rosaleslandscapingca.com`. |
 | `SITE_NAME` | Yes in production | `Rosales Landscaping & Construction`. |
 
 ## Production images
