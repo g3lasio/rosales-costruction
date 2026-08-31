@@ -26,29 +26,29 @@ const LIMESTONE = "#F2EEE5";
 const CLAY = "#9D5036";
 
 const SIZES = {
-  "paver-driveway-hero.webp": { w: 1920, h: 1280 },
-  "landscape-path-planting.webp": { w: 1280, h: 1600 },
-  "garden-walkway.webp": { w: 1280, h: 1600 },
-  "front-approach-before.webp": { w: 1600, h: 900 },
-  "front-approach-after.webp": { w: 1600, h: 900 },
+  "paver-driveway-hero-2026.webp": { w: 1920, h: 1280 },
+  "landscape-path-planting-2026.webp": { w: 1280, h: 1600 },
+  "garden-walkway-2026.webp": { w: 1280, h: 1600 },
+  "outdoor-kitchen-before-2026.webp": { w: 1600, h: 900 },
+  "outdoor-kitchen-after-2026.webp": { w: 1600, h: 900 },
 };
 const DEFAULT_SIZE = { w: 1600, h: 1200 };
 
 const PHOTOS = [
-  { file: "paver-driveway-hero.webp", en: "Paver driveway & landscaped entry", es: "Entrada de adoquín y paisajismo" },
-  { file: "synthetic-turf-garden.webp", en: "Synthetic turf & stepping stones", es: "Césped sintético y losas" },
-  { file: "granite-retaining-wall.webp", en: "Stone retaining wall", es: "Muro de contención de piedra" },
-  { file: "concrete-patio-process.webp", en: "Concrete patio in progress", es: "Patio de concreto en proceso" },
-  { file: "block-retaining-wall.webp", en: "Block retaining wall", es: "Muro de contención de bloque" },
-  { file: "flagstone-patio.webp", en: "Flagstone patio", es: "Patio de flagstone" },
-  { file: "outdoor-kitchen-masonry.webp", en: "Outdoor kitchen & masonry", es: "Cocina exterior y mampostería" },
-  { file: "wood-deck-steps.webp", en: "Deck & entry steps", es: "Deck y escalones de acceso" },
-  { file: "wood-fence.webp", en: "Wood fence", es: "Cerca de madera" },
-  { file: "landscape-path-planting.webp", en: "Landscape path & planting", es: "Sendero y plantación" },
-  { file: "drainage-trench.webp", en: "Drainage in progress", es: "Drenaje en proceso" },
-  { file: "garden-walkway.webp", en: "Garden walkway", es: "Sendero de jardín" },
-  { file: "front-approach-before.webp", en: "Before · prepared site", es: "Antes · sitio preparado", tone: CLAY },
-  { file: "front-approach-after.webp", en: "After · finished path", es: "Después · sendero terminado", tone: GREEN },
+  { file: "paver-driveway-hero-2026.webp", en: "Paver driveway & landscaped entry", es: "Entrada de adoquín y paisajismo" },
+  { file: "synthetic-turf-garden-2026.webp", en: "Synthetic turf & stepping stones", es: "Césped sintético y losas" },
+  { file: "granite-retaining-wall-2026.webp", en: "Stone retaining wall", es: "Muro de contención de piedra" },
+  { file: "concrete-patio-process-2026.webp", en: "Concrete patio in progress", es: "Patio de concreto en proceso" },
+  { file: "block-retaining-wall-2026.webp", en: "Block retaining wall", es: "Muro de contención de bloque" },
+  { file: "flagstone-patio-2026.webp", en: "Flagstone patio", es: "Patio de flagstone" },
+  { file: "outdoor-kitchen-masonry-2026.webp", en: "Outdoor kitchen & masonry", es: "Cocina exterior y mampostería" },
+  { file: "wood-deck-steps-2026.webp", en: "Deck & entry steps", es: "Deck y escalones de acceso" },
+  { file: "wood-fence-2026.webp", en: "Wood fence", es: "Cerca de madera" },
+  { file: "landscape-path-planting-2026.webp", en: "Landscape path & planting", es: "Sendero y plantación" },
+  { file: "drainage-trench-2026.webp", en: "Drainage in progress", es: "Drenaje en proceso" },
+  { file: "garden-walkway-2026.webp", en: "Garden walkway", es: "Sendero de jardín" },
+  { file: "outdoor-kitchen-before-2026.webp", en: "Before · masonry in progress", es: "Antes · mampostería en proceso", tone: CLAY },
+  { file: "outdoor-kitchen-after-2026.webp", en: "After · completed kitchen", es: "Después · cocina terminada", tone: GREEN },
 ];
 
 const esc = (value) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");

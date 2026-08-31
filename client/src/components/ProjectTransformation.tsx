@@ -27,8 +27,8 @@ export function ProjectTransformation({ compact = false }: { compact?: boolean }
       </div>
       <figure className="transformation-figure">
         <div className="comparison-stage" style={stageStyle}>
-          <img className="comparison-image" src={assets.frontApproachAfter} alt={english ? "Completed outdoor kitchen with stone masonry by Rosales" : "Cocina exterior terminada con mampostería de piedra por Rosales"} loading="lazy" decoding="async" />
-          <img className="comparison-image comparison-before" src={assets.frontApproachBefore} alt={english ? "Outdoor kitchen masonry in progress before the Rosales finish work" : "Mampostería de cocina exterior en proceso antes de los acabados de Rosales"} loading="lazy" decoding="async" />
+          <img className="comparison-image" src={assets.outdoorKitchenAfter} alt={english ? "Completed outdoor kitchen with stone masonry by Rosales" : "Cocina exterior terminada con mampostería de piedra por Rosales"} loading="lazy" decoding="async" />
+          <img className="comparison-image comparison-before" src={assets.outdoorKitchenBefore} alt={english ? "Outdoor kitchen masonry in progress before the Rosales finish work" : "Mampostería de cocina exterior en proceso antes de los acabados de Rosales"} loading="lazy" decoding="async" />
           <div className="comparison-divider" aria-hidden="true"><span><GripVertical size={18} /></span></div>
           <span className="comparison-label comparison-label-before">{english ? "Before · masonry in progress" : "Antes · mampostería en proceso"}</span>
           <span className="comparison-label comparison-label-after">{english ? "After · completed kitchen" : "Después · cocina terminada"}</span>
